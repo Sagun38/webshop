@@ -55,10 +55,31 @@ h1 {
 
 .product {
   text-align: center;
+  border: 1px solid black;
+  padding-left: 30px;
+  padding-right: 30px;
+  background-color: #dce6ed;
 }
 
 .content_product {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+}
+
+.name_product {
+  color: black;
+  font-weight: bold;
+}
+
+.prix_product {
+  font-weight: bold;
+  color: black;
+}
+
+.btn_magasin {
+  padding: 10px;
+  background-color: #0096FF;
+  color: #FFFFFF;
+  border: 1px solid #FFFFFF;
 }

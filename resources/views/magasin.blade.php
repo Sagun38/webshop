@@ -23,15 +23,34 @@
   </table>
 @endsection
 --}}
+<h2>{{ Session::get('status')}}</h2>
+@if()
+@else
+@end
 <div class="content_product">
-  @foreach($products as $product)
-    <div class="product">
-      <img style="width: 200px; height: 200px;" src='/img/{{ $product->img }}'>
-      <p>{{ $product->name }}</p>
-      <p>{{ $product->description }}</p>
-      <p>{{ $product->price / 100}} €</p>
-      <button>Ajouter au panier</button>
-    </div>
-@endforeach
+  @if($products instanceof Illuminate\Database\Eloquent\Collection)
+    @foreach($products as $product)
+      <div class="product">
+        <div class="bgimgproduct">
+          <img style="width: 200px; height: 200px;" src='/img/{{ $product->img }}'>
+        </div>
+        <p class="name_product">{{ $product->name }}</p>
+        <p>{{ $product->description }}</p>
+        <p class="prix_product">{{ $product->price / 100}} €</p>
+        <button class="btn_magasin">Ajouter au panier</button>
+      </div>
+    @endforeach
+    @else
+      <div data-id='{{ $product->id }}' class="single-product">
+        <img style="width: 50px;" src='/img/{{ $product->img }}'>
+        <p>{{$product->name}}</p>
+        <div>
+          <p>{{ $product->description }}</p>
+          <p>{{$product->price}}</p>
+        </div>
+        <button>Add to Panier</button>
+      </div>
+    @endif
 </div>
+
 @endsection

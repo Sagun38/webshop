@@ -14,8 +14,9 @@ class MagasinController extends Controller
      */
 
     // POUR LA PAGE MAGASIN
-    public function index()
+    public function index(Request $request)
     {
+        $request->session()->flash('status', 'Affichage reussi');
         $products = Product::all();
         return view('magasin', ['products' => $products]);
     }
